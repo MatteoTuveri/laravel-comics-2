@@ -1,14 +1,18 @@
+@php
+    $list = config('store.footer_lists');
+    $socials = config('store.socials');
+@endphp
 <div class="bg-footer py-5 position-relative overflow-hidden">
     <div class="container">
         <div class="d-flex">
-{{--             @foreach ($store['footer_lists'] as $item)
+        @foreach ($list as $item)
                 <ul class="list-unstyled mx-3">
                     <li class="fw-bold text-white text-uppercase title-list mb-2">{{ $item['title'] }}</li>
                     @foreach ($item['list'] as $dot)
                         <li class="text-white">{{ $dot }}</li>
                     @endforeach
                 </ul>
-            @endforeach --}}
+        @endforeach 
         </div>
     </div>
     <div>
@@ -23,9 +27,9 @@
         <div class="d-flex align-items-center">
             <h3 class="text-primary mb-0 fw-bold">FOLLOW US</h3>
             <div>
-{{--                 @foreach ($store['socials'] as $item)
-                    <img class="ms-2" src="{{ Vite::asset($item['img']) }}" alt="{{ $item['title'] }}">
-                @endforeach --}}
+                @foreach ($socials as $item)
+                        <img class="ms-2" src="{{ Vite::asset($item['img']) }}" alt="{{ $item['title'] }}">
+                @endforeach
             </div>
         </div>
     </div>

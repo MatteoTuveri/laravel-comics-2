@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('comics',ComicController::class);
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return to_route('comics.index');
-});
+}); */
 
 /* Route::get('/details/{id}', function ($id) {
     $comics = config('comics_db.comics');

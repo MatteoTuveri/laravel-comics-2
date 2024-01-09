@@ -23,6 +23,12 @@
                 </div>
             </div>
         </div>
+        <a href="{{ route('comics.edit', $comic->id) }}" class="btn btn-warning">MODIFICA</a>
+        <form class="w-100" action="{{ route('comics.destroy', $comic->id) }}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-danger w-100">ELIMINA</button>
+        </form>
         <a href="{{ route('comics.index') }}" class="btn btn-primary">TORNA ALLA HOME</a>
     </div> 
 </div>

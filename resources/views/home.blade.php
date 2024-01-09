@@ -1,3 +1,6 @@
+@php
+    $store = config('store.options_shop');
+@endphp
 @extends('layouts.app')
 @section('content')
 <main>
@@ -8,6 +11,9 @@
             <div class="ind text-white bg-dc position-absolute p-3 fw-bold">
                 CURRENT SERIES
             </div>
+            @if (session()->has('msg'))
+                <div class="alert alert-success">{{ session('msg') }}</div>
+            @endif
             <div class="row py-5">
                 @foreach ($comics as $comic)
                     <div class="col-12 col-md-4 col-xl-2 my-4 ">
@@ -27,16 +33,16 @@
     </div>
     <div class="bg-dc">
         <div class="container d-flex flex-wrap justify-content-center py-5">
-{{--             @foreach ($store['options_shop'] as $item)
-            <div class="d-flex align-items-center px-3 ">
-                <div>
-                    <img src="{{ Vite::asset($item['img']) }}" alt="{{$item['title']}}" class="opt">
-                </div>
-                <div class=" text-start text-uppercase text-white ms-2">
-                    {{$item['title']}}
-                </div>
-            </div>  
-            @endforeach --}}
+            @foreach ($store as $item)
+                <div class="d-flex align-items-center px-3 ">
+                    <div>
+                        <img src="{{ Vite::asset($item['img']) }}" alt="{{$item['title']}}" class="opt">
+                    </div>
+                    <div class=" text-start text-uppercase text-white ms-2">
+                        {{$item['title']}}
+                    </div>
+                </div>  
+            @endforeach
         </div>
     </div>
 </main>
