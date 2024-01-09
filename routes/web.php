@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ComicController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,8 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::resource('comics',ComicController::class);
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     $comics = config('comics_db.comics');
     $store = config('store.data');
     $data =[
@@ -37,4 +39,4 @@ Route::get('/details/{id}', function ($id) {
     } else {
         abort(404);
     }
-})->name('pages.details');
+})->name('pages.details'); */
