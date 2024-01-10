@@ -42,6 +42,7 @@
         </div>
         <button type="submit">submit</button>
         <button type="reset">reset</button>
+        <a href="{{ route('comics.index') }}">Back to Home</a>
     </form>
 </div>
 
