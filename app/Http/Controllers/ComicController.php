@@ -38,6 +38,15 @@ class ComicController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        //$new_comic = new Comic;
+        //$new_comic -> fill($data); //solo con fillable
+/*         $new_comic->title = $data['title'] ;
+        $new_comic->description = $data['description'] ;
+        $new_comic->price = $data['price'] ;
+        $new_comic->sale_date = $data['sale_date'] ;
+        $new_comic->series = $data['series'] ;
+        $new_comic->type = $data['type'] ; */
+
         $request->validate([
             'title' => 'required|min:5|max:255|unique:comics',
             'price' => 'required|max:30',
@@ -46,15 +55,7 @@ class ComicController extends Controller
             'type' => 'required',
         ]);
         //tutto in uno
-        //$new_comic = Comic::create($data) solo con fillable
-        $new_comic = new Comic;
-        $new_comic -> fill($data); //solo con fillable
-/*         $new_comic->title = $data['title'] ;
-        $new_comic->description = $data['description'] ;
-        $new_comic->price = $data['price'] ;
-        $new_comic->sale_date = $data['sale_date'] ;
-        $new_comic->series = $data['series'] ;
-        $new_comic->type = $data['type'] ; */
+        $new_comic = Comic::create($data); //solo con fillable
         $new_comic->save();
         return to_route('comics.index');
     }
@@ -91,12 +92,21 @@ class ComicController extends Controller
     public function update(Request $request, Comic $comic)
     {
         $data = $request->all();
-/*         $comic->title = $data['title'] ;
+        $request->validate([
+            'title' => 'required|min:5|max:255|unique:comics',
+            'price' => 'required|max:30',
+            'sale_date' => 'required',
+            'series' => 'required|max:100',
+            'type' => 'required',
+        ]);
+
+        /*      $comic->title = $data['title'] ;
         $comic->description = $data['description'] ;
         $comic->price = $data['price'] ;
         $comic->sale_date = $data['sale_date'] ;
         $comic->series = $data['series'] ;
         $comic->type = $data['type'] ; */
+        
         $comic -> fill($data); //solo con fillable
         $comic->update();
         return to_route('comics.index');
